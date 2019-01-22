@@ -1,11 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Luis Hernandez
- * Date: 21/01/2019
- * Time: 10:18 PM
+ * User: JAZMIN
+ * Date: 10/05/2018
+ * Time: 12:56 PM
  */
+
 namespace AppData\Config;
+
+
+use AppData\Model\login;
 
 class Request
 {
@@ -21,6 +25,7 @@ class Request
                 $ruta = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
                 $ruta = explode("/", $ruta);
                 $ruta = array_filter($ruta);
+                //print_r($ruta); //sirve para imprimir arreglos
                 if ($ruta[0] == "index.php") {
                     $this->controlador = "empleado_bienvenido";
                 } else {
@@ -34,26 +39,33 @@ class Request
                 $this->controlador = "empleado_bienvenido";
                 $this->metodo = "index";
             }
+      }
+      else
+          if (isset($_GET['url'])?stristr($_GET['url'],'login'):false)
+        {
+            $this->controlador="login";
+
+
+            if(isset($_POST["email"]))
+
+                $this->metodo = "verify";
+
+            else
+                $this->metodo = "index";
+        }
+        else if (isset($_GET['url'])?stristr($_GET['url'],'ReservacionesCliente'):false)
+        {
+            $this->controlador="ReservacionesCliente";
+
+            $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
         }
         else
-//            if (isset($_GET['url'])?stristr($_GET['url'],'login'):false)
-//            {
-//                $this->controlador="login";
-//                if(isset($_POST["email"]))
-//                    $this->metodo = "verify";
-//                else
-//                    $this->metodo = "index";
-//            }
-//            else if (isset($_GET['url'])?stristr($_GET['url'],'ReservacionesCliente'):false)
-//            {
-//                $this->controlador="ReservacionesCliente";
-//                $this->metodo=stristr($_GET['url'],'consulta')?"consulta":"index";
-//            }
-//            else
-            {
-                $this->controlador="inicio";
-                $this->metodo = "index";
-            }
+        {
+            $this->controlador="inicio";
+            $this->metodo = "index";
+
+        }
+
     }
     public function getControlador()
     {

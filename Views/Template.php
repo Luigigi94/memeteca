@@ -23,6 +23,7 @@ class Template
     <link href="<?=URL?>Public/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="<?=URL?>Public/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?=URL?>Public/css/footer.css">
 </head>
 
 <body>

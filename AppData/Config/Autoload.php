@@ -1,12 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Luis Hernandez
- * Date: 21/01/2019
- * Time: 10:14 PM
+ * User: JAZMIN
+ * Date: 08/05/2018
+ * Time: 03:23 PM
  */
 
 namespace AppData\Config;
+
+
 class Autoload
 {
     public static function run()
@@ -17,5 +19,6 @@ class Autoload
             //echo $ruta;
             require_once ($ruta);
         });
+
     }
 }
