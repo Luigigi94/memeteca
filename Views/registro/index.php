@@ -169,6 +169,12 @@ fieldset {
     </div>
 </div>
 <script type="text/javascript">
-    document.ready(fun)
+    document.ready(function(){
+        $("#contact-submit").click(function(form){
+            $.post("<?php echo URL?>registro/crear",$("#contact").serialize(),function (res) {
+                    $('#contact').find('input').val('');
+            });
+                });
+    });
 
 </script>
